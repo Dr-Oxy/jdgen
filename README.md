@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+# JDGEN WIDGET
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The primary objective of JDGEN is to assist job recruiters and companies in generating accurate and tailored job descriptions for various roles they are hiring for. The widget aims to eliminate the common practice of copying and pasting job descriptions that may not fit specific roles, ensuring that the requirements and responsibilities listed are appropriate for the position being advertised.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#Features)
+- [Screenshots](#screenshots)
+- [Get-Started](#get-started)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Generate job description.
+2. Copy Jd as plain text or markdown.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Screenshots.
 
-### `npm test`
+## Get Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started with this repository, follow these steps:
 
-### `npm run build`
+1. **Fork the repository:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   Click on the fork icon on the repository which create a copy of the repository.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Clone your forked repository:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/Dr-Oxy/jdgen.git
+   ```
 
-### `npm run eject`
+3. **Navigate to the project directory:**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```
+   cd jdgen
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Set up development environment**
+   Install dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```
+   npm install
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Run development
 
-## Learn More
+```
+npm run dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are encouraged and welcome. To contribute, please follow these steps:
+
+1. **Fork the repository**
+2. **Create a new branch**: `git checkout -b feature/your-feature-name`
+3. **Make your changes**
+4. **Commit your changes**: `git commit -m 'Add some feature'`
+5. **Push to the branch**: `git push origin feature/your-feature-name`
+6. **Create a pull request**
+
+## License
+
+This repository is licensed under the MIT License. For more details, please look at the [LICENSE](LICENSE) file.
