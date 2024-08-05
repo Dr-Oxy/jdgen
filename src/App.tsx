@@ -1,9 +1,10 @@
 import React from 'react';
+import JDWidget from './components/JDWidget';
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-red-400 text-3xl bg-green-400">Hello</h1>
+      <JDWidget />
     </div>
   );
 }
