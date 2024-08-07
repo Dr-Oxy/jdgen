@@ -24,12 +24,9 @@ const JDWidget = () => {
 
       <button
         onClick={() => setView('form')}
-        className="fixed bottom-4 md:bottom-12 right-2 md:right-24"
+        className="fixed bottom-4 md:bottom-12 right-2 md:right-24 z-[996]"
       >
-        <img
-          src="https://jdgen.vercel.app/static/media/jd-logo.64384debe6c30cfb77b83e89fb744d57.svg"
-          alt="jdlogo widget button"
-        />
+        <img src={`${process.env.PUBLIC_URL}/jd-logo.svg`} alt="Logo" />
       </button>
     </div>
   );

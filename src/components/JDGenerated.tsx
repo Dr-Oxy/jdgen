@@ -51,7 +51,7 @@ const JDGenerated = () => {
   };
 
   return (
-    <Modal>
+    <Modal onClose={() => setView('')}>
       <div className="h-full">
         <div className=" h-[95%] overflow-y-scroll ">
           <div
