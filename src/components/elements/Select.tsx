@@ -19,6 +19,7 @@ interface SelectDropdownTypes {
   leftIcon?: ReactNode;
   placeholder?: string;
   required?: boolean;
+  dark: boolean;
 }
 
 const SelectDropdown = React.forwardRef(function SelectDropdown(
@@ -30,6 +31,7 @@ const SelectDropdown = React.forwardRef(function SelectDropdown(
     options,
     textTransform,
     error,
+    dark,
     icon,
     leftIcon,
     placeholder,
@@ -45,6 +47,8 @@ const SelectDropdown = React.forwardRef(function SelectDropdown(
       fontSize: '13px',
       textTransform: textTransform || 'capitalize',
       zIndex: 100,
+      backgroundColor: dark ? 'rgb(75 85 99)' : 'white',
+      color: dark ? 'white' : 'black',
     }),
 
     placeholder: (provided: any) => ({
@@ -58,8 +62,8 @@ const SelectDropdown = React.forwardRef(function SelectDropdown(
       paddingLeft: leftIcon ? '32px' : '8',
       minHeight: '49px',
       fontSize: '16px !important',
-      border: `1px solid ${state.isFocused ? 'black' : 'black'}`,
-      color: '#E7EDF2',
+      border: `1px solid ${dark ? 'gray' : 'black'}`,
+
       borderRadius: '8px',
       textTransform: textTransform || 'capitalize',
       backgroundColor: 'transparent',
@@ -69,18 +73,28 @@ const SelectDropdown = React.forwardRef(function SelectDropdown(
       ...provided,
       zIndex: 100,
       fontSize: '13px',
+
       backgroundColor: state.isSelected
         ? '#3A3A3A'
         : state.isFocused
         ? '#e6e9f0'
         : '',
+
+      color: state.isSelected
+        ? 'white'
+        : state.isFocused
+        ? 'black'
+        : dark
+        ? 'white'
+        : 'black',
     }),
 
     singleValue: (provided: any, state: { isDisabled: any }) => {
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = 'opacity 300ms';
+      const color = dark ? 'white' : 'black';
 
-      return { ...provided, opacity, transition };
+      return { ...provided, opacity, transition, color };
     },
   };
 

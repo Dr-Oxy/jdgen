@@ -1,15 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
+
+import { AppContext } from '../utils/appContext';
+
 import Modal from './elements/Modal';
 
 import { Remarkable } from 'remarkable';
 import DOMPurify from 'isomorphic-dompurify';
 
-interface JobDesc {
-  jobDesc: string;
-  setView: (view: string) => void;
-}
+const JDGenerated = () => {
+  const { setView, jobDesc } = useContext(AppContext);
 
-const JDGenerated: React.FC<JobDesc> = ({ jobDesc, setView }) => {
   const hiddenDivRef = useRef<HTMLDivElement>(null);
 
   const md = new Remarkable();
@@ -58,7 +58,7 @@ const JDGenerated: React.FC<JobDesc> = ({ jobDesc, setView }) => {
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(formatJDasMD(jobDesc)),
             }}
-            className="text-sm  prose  prose-li:list-disc  prose-headings:text-black prose-headings:text-lg"
+            className="text-sm  text-black dark:text-gray-300 prose  prose-li:list-disc  prose-headings:text-black dark:prose-headings:text-white prose-headings:text-lg"
           ></div>
 
           <div
@@ -73,13 +73,13 @@ const JDGenerated: React.FC<JobDesc> = ({ jobDesc, setView }) => {
         <div className="flex items-center gap-x-3 justify-between mt-4 bg-transparent px-5">
           <button
             onClick={clear}
-            className=" bg-tranparent border border-black w-full py-2 rounded-xl"
+            className=" bg-tranparent text-black dark:text-white border border-black dark:border-gray-600 w-full py-2 rounded-xl"
           >
             Clear
           </button>
 
           <button
-            className=" bg-black text-white border border-black w-full py-2 rounded-xl"
+            className=" bg-black dark:bg-gray-600 text-white  border border-black w-full py-2 rounded-xl"
             onClick={copyToClipboard}
           >
             Copy

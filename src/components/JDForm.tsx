@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Modal from './elements/Modal';
 import SelectDropdown from './elements/Select';
 
 import { useForm, Controller } from 'react-hook-form';
+import { AppContext } from '../utils/appContext';
 
 import { job_exp, job_type } from '../utils/data';
 import { getJobDescription } from '../utils/helper';
-import { JobDescProps } from '../utils/context';
 
-const JDForm: React.FC<JobDescProps> = ({ setJobDesc, setView }) => {
+const JDForm = () => {
+  const { setView, setJobDesc, isDarkMode } = useContext(AppContext);
+
   const {
     handleSubmit,
     control,
@@ -50,9 +52,11 @@ const JDForm: React.FC<JobDescProps> = ({ setJobDesc, setView }) => {
     <Modal>
       <form onSubmit={handleJD}>
         <div>
-          <label className="text-sm text-black">Job title</label>
+          <label className="text-sm text-black dark:text-white">
+            Job title
+          </label>
           <input
-            className="mt-2 w-full bg-transparent text-black py-3 px-5 text-base border border-black rounded-lg focus:outline-0 focus:border-blue-400"
+            className="mt-2 w-full bg-transparent text-black dark:text-white py-3 px-5 text-base border border-black dark:border-gray-600 rounded-lg focus:outline-0 focus:border-blue-400"
             type="text"
             placeholder="Frontend developer (Reactjs/Nextjs)"
             {...register('jobTitle', {
@@ -66,7 +70,9 @@ const JDForm: React.FC<JobDescProps> = ({ setJobDesc, setView }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-10">
           <div>
-            <label className="text-sm text-black">Experience</label>
+            <label className="text-sm text-black dark:text-white">
+              Experience
+            </label>
 
             <Controller
               control={control}
@@ -75,7 +81,11 @@ const JDForm: React.FC<JobDescProps> = ({ setJobDesc, setView }) => {
                 required: true,
               }}
               render={({ field }) => (
-                <SelectDropdown options={job_exp} {...field} />
+                <SelectDropdown
+                  options={job_exp}
+                  dark={isDarkMode}
+                  {...field}
+                />
               )}
             />
 
@@ -85,7 +95,9 @@ const JDForm: React.FC<JobDescProps> = ({ setJobDesc, setView }) => {
           </div>
 
           <div>
-            <label className="text-sm text-black">Location</label>
+            <label className="text-sm text-black dark:text-white">
+              Location
+            </label>
             <Controller
               control={control}
               name="jobType"
@@ -93,7 +105,11 @@ const JDForm: React.FC<JobDescProps> = ({ setJobDesc, setView }) => {
                 required: true,
               }}
               render={({ field }) => (
-                <SelectDropdown options={job_type} {...field} />
+                <SelectDropdown
+                  options={job_type}
+                  dark={isDarkMode}
+                  {...field}
+                />
               )}
             />
 
@@ -106,7 +122,7 @@ const JDForm: React.FC<JobDescProps> = ({ setJobDesc, setView }) => {
         <div>
           <button
             disabled={loading}
-            className="bg-[#4D4C4C] text-white rounded-lg w-full py-3 text-base font-medium"
+            className=" bg-[#4D4C4C] dark:bg-white text-white dark:text-black rounded-lg w-full py-3 text-base font-medium"
           >
             {loading ? 'Loading..' : 'Generate JD'}
           </button>

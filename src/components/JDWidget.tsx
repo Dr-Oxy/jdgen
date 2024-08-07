@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
+import { useContext, useEffect } from 'react';
+
+import { AppContext } from '../utils/appContext';
+
 import JDForm from './JDForm';
 import JDGenerated from './JDGenerated';
 
 import { jdLogo } from '../assets/icons';
 
 const JDWidget = () => {
-  const [view, setView] = useState('');
+  const { view, setView, isDarkMode } = useContext(AppContext);
 
-  const [jobDesc, setJobDesc] = useState<string>('');
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
   return (
     <div>
-      {view === 'form' && <JDForm setJobDesc={setJobDesc} setView={setView} />}
+      {view === 'form' && <JDForm />}
 
-      {view === 'result' && <JDGenerated jobDesc={jobDesc} setView={setView} />}
+      {view === 'result' && <JDGenerated />}
 
       <button
         onClick={() => setView('form')}
