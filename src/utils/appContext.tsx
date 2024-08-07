@@ -26,7 +26,7 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     // Update localStorage whenever the theme changes
-    localStorage.setItem('darkMode', isDarkMode.toString());
+    // localStorage.setItem('darkMode', isDarkMode.toString());
 
     // Apply or remove the 'dark' class on the document element
     if (isDarkMode) {
