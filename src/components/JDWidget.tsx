@@ -5,13 +5,15 @@ import JDGenerated from './JDGenerated';
 import { jdLogo } from '../assets/icons';
 
 const JDWidget = () => {
-  const [view, setView] = useState('form');
+  const [view, setView] = useState('');
+
+  const [jobDesc, setJobDesc] = useState<string>('');
 
   return (
     <div>
-      {view === 'form' && <JDForm />}
+      {view === 'form' && <JDForm setJobDesc={setJobDesc} setView={setView} />}
 
-      {view === 'result' && <JDGenerated />}
+      {view === 'result' && <JDGenerated jobDesc={jobDesc} setView={setView} />}
 
       <button
         onClick={() => setView('form')}
