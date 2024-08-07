@@ -1,11 +1,14 @@
-import React from 'react';
+import { AppContextProvider } from './utils/appContext';
+
 import JDWidget from './components/JDWidget';
 
 function App() {
   return (
-    <div className="App">
-      <JDWidget />
-    </div>
+    <AppContextProvider>
+      <div className="App">
+        <JDWidget />
+      </div>
+    </AppContextProvider>
   );
 }
 
