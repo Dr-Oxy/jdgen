@@ -5,7 +5,7 @@ interface ModalProp {
 const Modal = ({ children }: ModalProp) => {
   return (
     <div className="bg-white/80 h-full w-full fixed top-0 bottom-0 left-0 z-50">
-      <div className="h-[600px] w-fit md:w-[420px] absolute bottom-0 lg:bottom-28 right-0 lg:right-32 px-6 py-10 bg-[#F3F3F3] border border-black md:rounded-3xl ">
+      <div className="h-[600px] w-full md:w-[420px] absolute bottom-0 lg:bottom-28 right-0 lg:right-32 px-6 pt-10 bg-[#F3F3F3] border border-black md:rounded-3xl ">
         {/* modal header */}
         <div className="flex justify-between items-start">
           <div>
