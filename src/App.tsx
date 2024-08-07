@@ -5,7 +5,7 @@ import JDWidget from './components/JDWidget';
 function App() {
   return (
     <AppContextProvider>
-      <div className="App">
+      <div>
         <JDWidget />
       </div>
     </AppContextProvider>

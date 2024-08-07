@@ -24,12 +24,17 @@ const JDWidget = () => {
 
       {view === 'result' && <JDGenerated />}
 
-      <button
+      <button onClick={() => setView('form')} className="bg-red-400 p-8">
+        <img src={jdLogo} alt="jdlogo widget button" />
+        Press
+      </button>
+
+      {/* <button
         onClick={() => setView('form')}
         className="fixed bottom-4 md:bottom-12 right-2 md:right-24"
       >
         <img src={jdLogo} alt="jdlogo widget button" />
-      </button>
+      </button> */}
     </div>
   );
 };
