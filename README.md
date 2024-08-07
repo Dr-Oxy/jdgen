@@ -44,10 +44,18 @@ To get started with this repository, follow these steps:
    npm install
    ```
 
+Add .env
+```
+REACT_APP_OPEN_API_KEY=sk-xyxyxyxyxyxyxyxyyx
+
+```
+
 Run development
 
 ```
-npm run dev
+
+npm start
+
 ```
 
 ## Contributing
@@ -64,3 +72,4 @@ Contributions are encouraged and welcome. To contribute, please follow these ste
 ## License
 
 This repository is licensed under the MIT License. For more details, please look at the [LICENSE](LICENSE) file.
+```
