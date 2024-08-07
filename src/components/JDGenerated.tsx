@@ -1,84 +1,90 @@
+import React, { useRef } from 'react';
 import Modal from './elements/Modal';
 
-const JDGenerated = () => {
+import { Remarkable } from 'remarkable';
+import DOMPurify from 'isomorphic-dompurify';
+
+interface JobDesc {
+  jobDesc: string;
+  setView: (view: string) => void;
+}
+
+const JDGenerated: React.FC<JobDesc> = ({ jobDesc, setView }) => {
+  const hiddenDivRef = useRef<HTMLDivElement>(null);
+
+  const md = new Remarkable();
+
+  const formatJDasMD = (description: string) => {
+    // Use Remarkable to convert markdown to HTML
+    const rawHtml = md.render(description);
+
+    // Sanitize the HTML to avoid XSS attacks
+    return DOMPurify.sanitize(rawHtml);
+  };
+
+  const clear = () => {
+    setView('form');
+  };
+
+  const copyToClipboard = () => {
+    if (hiddenDivRef.current) {
+      const range = document.createRange();
+      range.selectNode(hiddenDivRef.current);
+
+      const selection = window.getSelection();
+
+      if (selection) {
+        try {
+          selection.removeAllRanges();
+          selection.addRange(range);
+          document.execCommand('copy');
+          selection.removeAllRanges();
+          alert('Job description copied to clipboard successfully!');
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+          alert('Failed to copy job description. Please try again.');
+        }
+      }
+    } else {
+      alert('Unable to copy. Please try again.');
+    }
+  };
+
   return (
     <Modal>
       <div className="h-full">
-        <div className="mb-2 flex justify-between items-center">
-          <h2 className="font-semibold text-base text-black">
-            Frontend Developer
-          </h2>
+        <div className=" h-[95%] overflow-y-scroll ">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(formatJDasMD(jobDesc)),
+            }}
+            className="text-sm  prose  prose-li:list-disc  prose-headings:text-black prose-headings:text-lg"
+          ></div>
 
-          <button className="font-semibold">Copy</button>
+          <div
+            ref={hiddenDivRef}
+            dangerouslySetInnerHTML={{
+              __html: formatJDasMD(jobDesc),
+            }}
+            style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}
+          ></div>
         </div>
 
-        <div className=" h-[92%] overflow-y-scroll ">
-          <h3 className="text-sm teext-black mb-1">Job Description:</h3>
-          <p className="text-black text-xs mb-3">
-            We are seeking a talented and experienced Frontend Developer with a
-            strong background in React.js and Next.js to join our development
-            team. The ideal candidate will be responsible for developing and
-            maintaining high-quality web applications, ensuring an exceptional
-            user experience. You will work closely with our backend developers,
-            designers, and product managers to bring our innovative products to
-            life.
-          </p>
+        <div className="flex items-center gap-x-3 justify-between mt-4 bg-transparent px-5">
+          <button
+            onClick={clear}
+            className=" bg-tranparent border border-black w-full py-2 rounded-xl"
+          >
+            Clear
+          </button>
 
-          <h3 className="text-sm teext-black mb-1">Key Responsibilities:</h3>
-          <ul className="text-black text-xs mb-3">
-            <li className="list-disc list-inside">
-              {' '}
-              Develop and maintain user-facing features using React.js and
-              Next.js.
-            </li>
-            <li className="list-disc list-inside">
-              {' '}
-              Build reusable components and front-end libraries for future use.
-            </li>
-            <li className="list-disc list-inside">
-              {' '}
-              Translate designs and wireframes into high-quality code.{' '}
-            </li>
-            <li className="list-disc list-inside">
-              Optimize components for maximum performance across a vast array of
-              web-capable devices and browsers.
-            </li>
-            <li className="list-disc list-inside">
-              Collaborate with backend developers to integrate user-facing
-              elements with server-side logic.
-            </li>
-            <li>Ensure the technical feasibility of UI/UX designs.</li>
-            <li className="list-disc list-inside">
-              Participate in code reviews and provide constructive feedback to
-              peers.
-            </li>
-            <li className="list-disc list-inside">
-              Stay up-to-date with the latest industry trends and technologies
-              to ensure our applications are current and competitive.
-            </li>
-          </ul>
-
-          <h3 className="text-sm teext-black mb-1">Job Description:</h3>
-          <p className="text-black text-xs">
-            We are seeking a talented and experienced Frontend Developer with a
-            strong background in React.js and Next.js to join our development
-            team. The ideal candidate will be responsible for developing and
-            maintaining high-quality web applications, ensuring an exceptional
-            user experience. You will work closely with our backend developers,
-            designers, and product managers to bring our innovative products to
-            life.
-          </p>
+          <button
+            className=" bg-black text-white border border-black w-full py-2 rounded-xl"
+            onClick={copyToClipboard}
+          >
+            Copy
+          </button>
         </div>
-
-        <form className="flex items-center gap-x-3 justify-between mt-4 bg-transparent py-2 px-5  border border-black rounded-xl focus-within::outline-0  focus-within:border-blue-600">
-          <input
-            className="flex-1 border-0 focus:border-0 outline-none shadow-none bg-transparent text-black text-base"
-            type="text"
-            placeholder="Follow up chat"
-          />
-
-          <button>Send</button>
-        </form>
       </div>
     </Modal>
   );
