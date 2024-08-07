@@ -49,7 +49,7 @@ const JDForm = () => {
   });
 
   return (
-    <Modal>
+    <Modal onClose={() => setView('')}>
       <form onSubmit={handleJD}>
         <div>
           <label className="text-sm text-black dark:text-white">
