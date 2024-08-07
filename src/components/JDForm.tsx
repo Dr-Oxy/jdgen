@@ -1,11 +1,15 @@
+import React, { useState } from 'react';
+
 import Modal from './elements/Modal';
 import SelectDropdown from './elements/Select';
 
 import { useForm, Controller } from 'react-hook-form';
 
 import { job_exp, job_type } from '../utils/data';
+import { getJobDescription } from '../utils/helper';
+import { JobDescProps } from '../utils/context';
 
-const JDForm = () => {
+const JDForm: React.FC<JobDescProps> = ({ setJobDesc, setView }) => {
   const {
     handleSubmit,
     control,
@@ -13,9 +17,38 @@ const JDForm = () => {
     formState: { errors },
   } = useForm();
 
+  const [loading, setLoading] = useState(false);
+
+  const key = process.env.REACT_APP_OPEN_API_KEY;
+
+  const handleJD = handleSubmit(async (data) => {
+    setLoading(true);
+
+    const prompt = `Generate a detailed job description for a ${data.jobTitle} with ${data.jobExp.value} years of experience, working ${data.jobType.value}. your responses as proper markdowns and presented this way:
+    - Job Title (contains experience level based on the years provided, determine if it's a junior, intermediate or senior, do not add remote or hybrid or onsite on job title. You do not need to add the word 'Job title', just write the title of the job given as the heading)
+    - Job Description (make it brief)
+    - Key Responsibilities (presented as a list)
+    - Qualifications
+    - What We Offer
+    `;
+
+    const { response, error } = await getJobDescription(prompt, key);
+
+    if (error) {
+      console.log({ error });
+      setLoading(false);
+    } else if (response) {
+      setJobDesc(response);
+      setView('result');
+      setLoading(false);
+    } else {
+      setLoading(false);
+    }
+  });
+
   return (
     <Modal>
-      <form>
+      <form onSubmit={handleJD}>
         <div>
           <label className="text-sm text-black">Job title</label>
           <input
@@ -71,8 +104,11 @@ const JDForm = () => {
         </div>
 
         <div>
-          <button className="bg-[#4D4C4C] text-white rounded-lg w-full py-3 text-base font-medium">
-            Generate JD
+          <button
+            disabled={loading}
+            className="bg-[#4D4C4C] text-white rounded-lg w-full py-3 text-base font-medium"
+          >
+            {loading ? 'Loading..' : 'Generate JD'}
           </button>
         </div>
       </form>

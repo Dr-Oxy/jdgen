@@ -2,7 +2,18 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
-    extend: {},
+    extend: {
+      // typography: (theme) => ({
+      //   DEFAULT: {
+      //     css: {
+      //       li: {
+      //         marginTop: '4px',
+      //         marginBottom: '4px',
+      //       },
+      //     },
+      //   },
+      // }),
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
