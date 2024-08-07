@@ -124,7 +124,7 @@ const JDForm = () => {
             disabled={loading}
             className=" bg-[#4D4C4C] dark:bg-white text-white dark:text-black rounded-lg w-full py-3 text-base font-medium"
           >
-            {loading ? 'Loading..' : 'Generate JD'}
+            {loading ? 'Generating..' : 'Generate JD'}
           </button>
         </div>
       </form>

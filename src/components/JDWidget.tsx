@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 import { AppContext } from '../utils/appContext';
 
@@ -6,15 +6,7 @@ import JDForm from './JDForm';
 import JDGenerated from './JDGenerated';
 
 const JDWidget = () => {
-  const { view, setView, isDarkMode } = useContext(AppContext);
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
+  const { view, setView } = useContext(AppContext);
 
   return (
     <div>
