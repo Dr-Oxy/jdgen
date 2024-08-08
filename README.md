@@ -2,20 +2,17 @@
 
 The primary objective of JDGEN is to assist job recruiters and companies in generating accurate and tailored job descriptions for various roles they are hiring for. The widget aims to eliminate the common practice of copying and pasting job descriptions that may not fit specific roles, ensuring that the requirements and responsibilities listed are appropriate for the position being advertised.
 
-## Table of Contents
-
-- [Features](#Features)
-- [Screenshots](#screenshots)
-- [Get-Started](#get-started)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Features
 
-1. Generate job description.
-2. Copy Jd as plain text or markdown.
+1. Generate job description based on the role, experience level and work location type
+2. Copy generated job description.
+3. Toggle between dark and light theme
 
 ## Screenshots.
+
+![Form Input](src/assets/images/Jdgen-1.png)
+![Generating JD](src/assets/images/Jdgen-2.png)
+![Dark mode preview](src/assets/images/Jdgen-3.png)
 
 ## Get Started
 
@@ -44,7 +41,8 @@ To get started with this repository, follow these steps:
    npm install
    ```
 
-Add .env
+Add .env file
+
 ```
 REACT_APP_OPEN_API_KEY=sk-xyxyxyxyxyxyxyxyyx
 
@@ -60,7 +58,7 @@ npm start
 
 ## Contributing
 
-Contributions are encouraged and welcome. To contribute, please follow these steps:
+This is open for conatributions. Please fork the repository and customize this template further based on your specific needs and additional features.
 
 1. **Fork the repository**
 2. **Create a new branch**: `git checkout -b feature/your-feature-name`
@@ -72,4 +70,7 @@ Contributions are encouraged and welcome. To contribute, please follow these ste
 ## License
 
 This repository is licensed under the MIT License. For more details, please look at the [LICENSE](LICENSE) file.
+
+```
+
 ```
