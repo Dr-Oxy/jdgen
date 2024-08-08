@@ -37,7 +37,7 @@ const JDForm = () => {
     const { response, error } = await getJobDescription(prompt, key);
 
     if (error) {
-      console.log({ error });
+      alert(error);
       setLoading(false);
     } else if (response) {
       setJobDesc(response);
@@ -45,6 +45,7 @@ const JDForm = () => {
       setLoading(false);
     } else {
       setLoading(false);
+      alert('Something went wrong. Please try again');
     }
   });
 
@@ -96,7 +97,7 @@ const JDForm = () => {
 
           <div>
             <label className="text-sm text-black dark:text-white">
-              Location
+              Work Location type
             </label>
             <Controller
               control={control}
@@ -114,7 +115,7 @@ const JDForm = () => {
             />
 
             {errors.jobType ? (
-              <p className="text-red-500 text-xs">Select work type</p>
+              <p className="text-red-500 text-xs">Select work location type</p>
             ) : null}
           </div>
         </div>
@@ -122,7 +123,7 @@ const JDForm = () => {
         <div>
           <button
             disabled={loading}
-            className=" bg-[#4D4C4C] dark:bg-white text-white dark:text-black rounded-lg w-full py-3 text-base font-medium"
+            className=" bg-[#272727] dark:bg-white text-white dark:text-black rounded-lg w-full py-3 text-base font-medium"
           >
             {loading ? 'Generating..' : 'Generate JD'}
           </button>

@@ -4,13 +4,8 @@ import { AppContext } from '../../utils/appContext';
 const ThemeProvider = () => {
   const { isDarkMode, toggleDarkMode } = useContext(AppContext);
 
-  console.log({ isDarkMode }, 'theme');
-
   return (
-    <button
-      onClick={toggleDarkMode}
-      className="p-2 rounded-md bg-red-400 dark:bg-blue-500"
-    >
+    <button onClick={toggleDarkMode} className="p-2 rounded-md">
       {isDarkMode ? (
         <svg
           width="24"

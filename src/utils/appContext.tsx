@@ -23,10 +23,8 @@ const getTheme = (): boolean => {
 const setTheme = (isDark: boolean) => {
   localStorage.setItem('darkMode', isDark.toString());
   if (isDark) {
-    document.getElementById('jdgen-widget-root')?.classList.add('dark');
     document.documentElement.classList.add('dark');
   } else {
-    document.getElementById('jdgen-widget-root')?.classList.remove('dark');
     document.documentElement.classList.remove('dark');
   }
 };
