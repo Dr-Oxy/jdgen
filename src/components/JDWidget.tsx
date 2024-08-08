@@ -29,14 +29,15 @@ const JDWidget = () => {
 
     Array.from(elements).forEach(function (element) {
       element.addEventListener('click', openModal);
+      console.log({ element, view }, 'added');
     });
 
     return () => {
       Array.from(elements).forEach(function (element) {
         element.removeEventListener('click', openModal);
+        console.log({ element, view }, 'removed');
       });
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
