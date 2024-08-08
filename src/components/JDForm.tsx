@@ -57,7 +57,7 @@ const JDForm = () => {
             Job title
           </label>
           <input
-            className="mt-2 w-full bg-transparent text-black dark:text-white py-3 px-5 text-base border border-black dark:border-gray-600 rounded-lg focus:outline-0 focus:border-blue-400"
+            className="mt-2 w-full bg-transparent text-black dark:text-white py-3 !px-5 text-base border border-black dark:border-gray-600 rounded-lg focus:outline-0 focus:border-blue-400"
             type="text"
             placeholder="Frontend developer (Reactjs/Nextjs)"
             {...register('jobTitle', {

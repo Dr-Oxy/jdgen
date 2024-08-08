@@ -10,11 +10,10 @@ const JDWidget = () => {
 
   const [showButton, setShowButton] = useState(false);
 
-  const openModal = () => {
-    setView('form');
-  };
-
   useEffect(() => {
+    const openModal = () => {
+      setView('form');
+    };
     const elements = document.getElementsByClassName('jd-widget-trigger');
 
     if (
@@ -29,13 +28,11 @@ const JDWidget = () => {
 
     Array.from(elements).forEach(function (element) {
       element.addEventListener('click', openModal);
-      console.log({ element, view }, 'added');
     });
 
     return () => {
       Array.from(elements).forEach(function (element) {
         element.removeEventListener('click', openModal);
-        console.log({ element, view }, 'removed');
       });
     };
   }, []);
