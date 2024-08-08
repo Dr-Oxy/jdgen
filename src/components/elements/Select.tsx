@@ -65,7 +65,7 @@ const SelectDropdown = React.forwardRef(function SelectDropdown(
       border: `1px solid ${dark ? 'gray' : 'black'}`,
 
       borderRadius: '8px',
-      textTransform: textTransform || 'capitalize',
+      textTransform: textTransform,
       backgroundColor: 'transparent',
     }),
 
