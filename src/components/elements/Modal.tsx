@@ -8,7 +8,7 @@ interface ModalProp {
 const Modal = ({ children, onClose }: ModalProp) => {
   return (
     <div className="h-full w-full ">
-      <div className="z-[9999] h-[600px] w-full md:w-[420px] absolute bottom-0 lg:bottom-28  right-0 lg:right-32 px-6 pt-10 bg-[#f5f5f5] dark:bg-[#272727] border border-black dark:border-white md:rounded-3xl ">
+      <div className="z-[9999] h-[600px] w-full md:!w-[420px] absolute bottom-0 lg:bottom-28  right-0 lg:right-32 !px-6 pt-10 bg-[#f5f5f5] dark:bg-[#272727] border border-black dark:border-white md:rounded-3xl ">
         {/* modal header */}
         <div className="flex justify-between items-start">
           <div>
