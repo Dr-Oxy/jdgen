@@ -45,7 +45,7 @@ const SelectDropdown = React.forwardRef(function SelectDropdown(
     menu: (provided: any) => ({
       ...provided,
       fontSize: '13px',
-      textTransform: textTransform || 'capitalize',
+      textTransform: textTransform,
       zIndex: 100,
       backgroundColor: dark ? 'rgb(75 85 99)' : 'white',
       color: dark ? 'white' : 'black',
@@ -77,16 +77,16 @@ const SelectDropdown = React.forwardRef(function SelectDropdown(
       backgroundColor: state.isSelected
         ? '#3A3A3A'
         : state.isFocused
-        ? '#e6e9f0'
-        : '',
+          ? '#e6e9f0'
+          : '',
 
       color: state.isSelected
         ? 'white'
         : state.isFocused
-        ? 'black'
-        : dark
-        ? 'white'
-        : 'black',
+          ? 'black'
+          : dark
+            ? 'white'
+            : 'black',
     }),
 
     singleValue: (provided: any, state: { isDisabled: any }) => {
